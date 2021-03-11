@@ -27,3 +27,12 @@ nmap  <Target>
 
 # Slow comprehensive scan: Every TCP and UDP port is scanned. OS detection (-O), version detection (-sV), script scanning (-sC), and traceroute (--traceroute) are all enabled
 nmap -sS -sU -T4 -A -v -PE -PS80,443 -PA3389 -PP -PU40125 -PY --source-port 53 --script "default or (discovery and safe)"  <Target>
+
+# Performs a HEAD request for the root folder ("/") of a web server and displays the HTTP headers returned.
+nmap --script http-headers  <Target>
+
+# Running all scripts omitting those in the vuln category
+nmap --script "not vuln"  <Target>
+
+# All categories for scripts: auth, broadcast, brute, default, discovery, dos, exploit, external, fuzzer, intrusive, malware, safe, version and vuln
+nmap --script <category>  <Target>
