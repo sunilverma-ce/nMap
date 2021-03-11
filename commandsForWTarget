@@ -1,0 +1,29 @@
+# Intense scan : -A for OS detection (-O), version detection (-sV), script scanning (-sC), and traceroute (--traceroute).
+nmap -T4 -A -v <Target>
+
+# Intense scan and scanning TCP and UDP ports: OS detection (-O), version detection (-sV), script scanning (-sC), and traceroute (--traceroute)
+nmap -sS -sU -T4 -A -v <Target>
+
+# Intense scan, all TCP ports: OS detection (-O), version detection (-sV), script scanning (-sC), and traceroute (--traceroute)
+nmap -p 1-65535 -T4 -A -v <Target>
+
+# Intense scan, no ping: without checking to see if targets are up first
+nmap -T4 -A -v -Pn <Target>
+
+# Ping scan: Only finds which targets are up and does not port scan them.
+nmap -sn <Target>
+
+# Quick scan: faster than a normal scan because it uses the aggressive timing template and scans fewer ports.
+nmap -T4 -F <Target>
+
+# Quick scan plus OS and version detection.
+nmap -sV -T4 -O -F --version-light  <Target>
+
+# Quick traceroute: Traces the paths to targets without doing a full port scan on them.
+nmap -sn --traceroute  <Target>
+
+# Regular or basic scan
+nmap  <Target>
+
+# Slow comprehensive scan: Every TCP and UDP port is scanned. OS detection (-O), version detection (-sV), script scanning (-sC), and traceroute (--traceroute) are all enabled
+nmap -sS -sU -T4 -A -v -PE -PS80,443 -PA3389 -PP -PU40125 -PY --source-port 53 --script "default or (discovery and safe)"  <Target>
